@@ -34,7 +34,7 @@ router.get("/mine", validateSession, (req, res) => {
     .catch(err => res.status(500).json({error: err}))
 });
 
-router.get('/title', function (req, res) {
+router.get('/:title', function (req, res) {
     let title = req.params.title;
 
     journal.findAll({
@@ -42,6 +42,28 @@ router.get('/title', function (req, res) {
     })
     .then(journal => res.status(200).json(journal))
     .catch(err => res.status(500).json({error: err}))
+});
+
+router.put("/update/:entryId", validateSession, function(req, res) {
+    const updateJournalEntry = {
+        title: req.body.journal.title,
+        date: req.body.journal.date,
+        entry: req.body.journal.entry
+    };
+
+    const query = { where: { id: req.params.entryId, owner: req.user.id} };
+
+    journal.update(updateJournalEntry, query)
+    .then((journals) => res.status(200).json(journals))
+    .catch((err) => res.status(500).json({ error: err}));
+});
+
+router.delete("/delete/:id", validateSession, function (req, res) {
+    const query = { where: { id: req.params.id, owner: req.user.id } };
+
+    journal.destroy(query)
+    .then(() => res.status(200).json({ message: "Journal Entry Removed" }))
+    .catch((err) => res.status(500).json({ error: err }));
 });
 
 module.exports = router;
