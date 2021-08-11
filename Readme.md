@@ -1,3 +1,5 @@
+![loginUser](https://user-images.githubusercontent.com/84037604/128955510-3f3e6cb1-ce38-4185-8321-44535c536002.png)
+![registerUser](https://user-images.githubusercontent.com/84037604/128955535-661b7ffa-1d9b-44cf-828e-888dfc818620.png)
 # Folder Structure
 
 ## 05-Node-Server
