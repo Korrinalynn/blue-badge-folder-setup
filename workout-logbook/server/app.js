@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use("/user", user);
 
-app.use('/logbook', logbook);
+app.use('/log', logbook);
 
 app.listen(3004, function(){
     console.log("App is listening on port 3004");

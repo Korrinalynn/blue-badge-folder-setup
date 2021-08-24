@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import "./App.css";
-import Calculator from "./components/day03-challenge/Calculator/Calculator"
-import InputField from "./components/day03-challenge/inputFieldDemo/inputField";
-import TenLittleMonkeys from "./components/day03-challenge/TenLittleMonkeys";
+import UseEffectPractice from "./components/day04-challenge/useEffectPractice/UseEffectPractice";
+import ChuckFetch from "./components/day04-challenge/ChuckFetch/ChuckFetch";
+import MortyParent from "./components/day04-challenge/MortyFetch/MortyParent";
 
 function App() {
   // This is a comment
@@ -12,9 +12,9 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to React, {welcomeName}</h1>
-      {/* <TenLittleMonkeys /> */}
-      {/* <InputField /> */}
-      <Calculator />
+      {/* <UseEffectPractice />
+      <ChuckFetch /> */}
+      <MortyParent />
     </div>
   );
 }

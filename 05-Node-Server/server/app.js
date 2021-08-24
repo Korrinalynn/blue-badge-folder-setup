@@ -13,6 +13,7 @@ app.use(express.json());
 
 app.use("/user", user);
 
+app.use(require('./middleware/validate-session'));
 app.use('/journal', journal);
 
 app.listen(3000, function(){

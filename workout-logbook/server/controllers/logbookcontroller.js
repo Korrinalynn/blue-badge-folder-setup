@@ -20,16 +20,19 @@ router.post('/', validateSession, (req, res) => {
     .catch(err => res.status(500).json({error: err}))
 })
 
-router.get("/", (req, res) => {
-    logbook.findAll()
-    .then(logbooks => res.status(200).json(logbooks))
+router.get("/", validateSession, (req, res) => {
+    let userid = req.user.id
+    logbook.findAll({
+        where: { owner: userid }
+    })
+    .then(logbook => res.status(200).json(logbook))
     .catch(err => res.status(500).json({ error: err}))
 });
 
 router.get("/:id", validateSession, (req, res) => {
     let userid = req.user.id
     logbook.findAll({
-        where: { owner: userid }
+        where: { owner: userid, id: req.params.id }
     })
     .then(logbook => res.status(200).json(logbook))
     .catch(err => res.status(500).json({error: err}))
